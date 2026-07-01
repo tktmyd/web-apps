@@ -58,7 +58,8 @@ def _(dk, dω, k, np, plt, ω):
         ax2.plot(t, -env, color='black')
         ax2.set_yticks(np.arange(-2, 2.01, 1))
         ax2.legend(loc="upper right")
-    
+        ax2.set_xlabel("time [s]")
+
         return fig
 
     return (plot,)
