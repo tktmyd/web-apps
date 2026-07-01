@@ -112,45 +112,6 @@ def _(np, π):
     return disp_eq, disp_lhs
 
 
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    Love波分散方程式の$x$軸は
-    $$
-    x = \omega H \sqrt{1/\beta_1^2 - 1/c^2}
-    $$
-    なので，その最大値は
-    $$
-    x_{\mathrm{max}} = \omega H \sqrt{1/\beta_1^2 - 1/\beta_2^2}
-    $$
-
-    解は$\tan(x)$が正になる
-    - $[0, \pi/2)$
-    - $[\pi, 3\pi/2)$
-    - $[2\pi, 5\pi/2)$
-    - $[3\pi, 7\pi/2)$
-
-    に存在するから，解の個数は
-    $$
-    n = \left\lceil \frac{x_\mathrm{max}}{\pi} \right\rceil
-    $$
-    となる．
-    解は上記の範囲で探索するが，$\tan$が発散するところを避けて，$0, \pi, 2\pi \dots$を初期値にするとよさそう．
-    初期値を$c_0$とすると，$k$次モードでは
-
-    $$
-    \omega H \sqrt{1/\beta_1^2 - 1/c_0^2} = k \pi
-    $$
-    から
-    $$
-    c_0 = \left(
-        \frac{1}{\beta_1^2} - \frac{k^2 \pi^2 }{\omega^2 H ^2}
-    \right)^{-1/2}
-    $$
-    """)
-    return
-
-
 @app.cell
 def _(np, π):
     def nmode(beta1, beta2, H, f): 
@@ -281,6 +242,7 @@ def _(
             axe.set_xlim([-1.1, 1.1])
             axe.set_ylim([0, 60])
             axe.invert_yaxis()
+            axe.plot([-1, 1], [H, H], alpha=0.4, linewidth=2.5, color='gray')
             axe.set_title(f'mode = {k}')
             axe.spines['top'   ].set_visible(False)
             axe.spines['right' ].set_visible(False)
@@ -293,9 +255,9 @@ def _(
             axe.spines['bottom'  ].set_position(('outward', 10))
             axe.grid(linestyle = 'dashed', linewidth = 1., color = (220/255,220/255,220/255), alpha=0.8)
 
-        plt.subplots_adjust(wspace=0.2, hspace=0.6)
 
         fig.tight_layout()
+        plt.subplots_adjust(wspace=0.2, hspace=0.4)
 
         return fig
 
