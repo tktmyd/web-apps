@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-CZceb_kH.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-Bam3NpBI.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-C_DwAp7Z.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-CEsLFVD9.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-D5MAsWEG.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-C6PDArdf.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>love-dispersion</title>
+    <script type="module" crossorigin src="./assets/index-BarYyfbP.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-y72bE5iF.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-LvLJmgfZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-Bj1aDYRI.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-B3qBwwSJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-PbYoItBR.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-Wyg6Md5s.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-CuYNS33t.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-CCOoIlcP.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-CGfP-Ye3.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-BJ9oKrvH.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-_i91gs5h.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-BtEcuwwV.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-X2M2usMq.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-CFAaMy0O.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-DuHyjdW2.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-CSu739Rf.js">
+    <link rel="modulepreload" crossorigin href="./assets/fullscreen-BWhrFYLX.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-CO4MfAgB.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-C3166O2z.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-BTp1tQDO.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-DQmqoJgr.js">
+    <link rel="modulepreload" crossorigin href="./assets/x-9vLEgLY6.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-D8ewebPZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-DfvClvB6.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-BH8bU9Xf.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-D91BmmQi.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-C2E8KCbD.js">
+    <link rel="modulepreload" crossorigin href="./assets/isObject-DvLSfCY5.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseFor-DKD1r8uL.js">
+    <link rel="modulepreload" crossorigin href="./assets/merge-_9WLTEyt.js">
+    <link rel="modulepreload" crossorigin href="./assets/zod-H_cgTO0M.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-Dcn8htEz.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-CfyqLOPG.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-BukULOeS.js">
+    <link rel="modulepreload" crossorigin href="./assets/DeferredRequestRegistry-EP9ZArpv.js">
+    <link rel="modulepreload" crossorigin href="./assets/constants-B9JJ72XE.js">
+    <link rel="modulepreload" crossorigin href="./assets/session-XnH_5qDa.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-Co1uQiSh.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-KshNNAOp.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-Baf35rp4.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNonce-0SWz6w4W.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-ChHTAPod.js">
+    <link rel="modulepreload" crossorigin href="./assets/arrays-DWxvyYxP.js">
+    <link rel="modulepreload" crossorigin href="./assets/strings-C0KZ4uek.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-CXj_gH7S.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-ClLgkhPb.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-CzbhqMat.js">
+    <link rel="modulepreload" crossorigin href="./assets/paths-kNeJ8nbe.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Dez1I5M9.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-B0WqBUnf.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CwfKvuyQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-D-o1OXc9.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BZhJ1bTM.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Bj9Iedc0.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DHMtQYxT.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DnIl7RU-.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CfGDksO-.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-C6JeW1YI.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-DCE7d2fN.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es-DdxMtdqK.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-DXo9vDEJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-BT6B8Bon.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-CsYTPAhW.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-OiXznToA.js">
+    <link rel="modulepreload" crossorigin href="./assets/database-zap-DpKMaYZb.js">
+    <link rel="modulepreload" crossorigin href="./assets/main-DmhaVp6Y.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-B2OlRfrE.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-YqGfStRa.js">
+    <link rel="modulepreload" crossorigin href="./assets/kbd-BCXa3Ocm.js">
+    <link rel="modulepreload" crossorigin href="./assets/useInstallPackage-Dhp7gET-.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-Dj7YzzBi.js">
+    <link rel="modulepreload" crossorigin href="./assets/dialog-CoCi5287.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-BlBSYv0n.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers-CG6PuY93.js">
+    <link rel="modulepreload" crossorigin href="./assets/SSRProvider-DrpctNAg.js">
+    <link rel="modulepreload" crossorigin href="./assets/context-DE_5rdOV.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-DCM-63YT.js">
+    <link rel="modulepreload" crossorigin href="./assets/usePress-mjvipKvz.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-DLn3gG6E.js">
+    <link rel="modulepreload" crossorigin href="./assets/ImperativeModal-CcKbawj8.js">
+    <link rel="modulepreload" crossorigin href="./assets/cell-link-Dxr4AoiF.js">
+    <link rel="modulepreload" crossorigin href="./assets/multi-map-BRoHtMOY.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-DcAz54bD.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right-C7RH0Nc7.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-ItqBTuc3.js">
+    <link rel="modulepreload" crossorigin href="./assets/links-DK7te6sJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/useRunCells-Cwpw-OBX.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-CMbu3kZg.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-C6tO3NDV.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-DhAvfYZu.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderHTML-CUFYhU6m.js">
+    <link rel="modulepreload" crossorigin href="./assets/datasource-XJWCNkcC.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-DMJHItu_.js">
+    <link rel="modulepreload" crossorigin href="./assets/package-BoMcg6sy.js">
+    <link rel="modulepreload" crossorigin href="./assets/sparkles-DctOjjEz.js">
+    <link rel="modulepreload" crossorigin href="./assets/MarimoErrorOutput-AKU2x-PX.js">
+    <link rel="modulepreload" crossorigin href="./assets/eye-off-CFdFJ5Ma.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-cw-DcEasnos.js">
+    <link rel="modulepreload" crossorigin href="./assets/tree-actions-B2y0DYNM.js">
+    <link rel="modulepreload" crossorigin href="./assets/spinner-DTBVbtl-.js">
+    <link rel="modulepreload" crossorigin href="./assets/html-to-image-OqWF70zk.js">
+    <link rel="modulepreload" crossorigin href="./assets/focus-CdA2cCjm.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-CT1LpOBD.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-BOhWaFqY.js">
+    <link rel="modulepreload" crossorigin href="./assets/micromark-factory-space-P--XWZhg.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-5FQGJX7Z-D-AUn5sP.js">
+    <link rel="modulepreload" crossorigin href="./assets/markdown-renderer-2G_mck3Z.js">
+    <link rel="modulepreload" crossorigin href="./assets/command-Da-qul1Y.js">
+    <link rel="modulepreload" crossorigin href="./assets/field-P2PBa1Bb.js">
+    <link rel="modulepreload" crossorigin href="./assets/popover-CjugjEGp.js">
+    <link rel="modulepreload" crossorigin href="./assets/errors-48KFPvCp.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-DjxXHxVz.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-BEAxH5RS.js">
+    <link rel="modulepreload" crossorigin href="./assets/useIframeCapabilities-CUFFq7nH.js">
+    <link rel="modulepreload" crossorigin href="./assets/error-banner-CorP4DgP.js">
+    <link rel="modulepreload" crossorigin href="./assets/formats-C07FvFat.js">
+    <link rel="modulepreload" crossorigin href="./assets/en-US-DZwIjHwu.js">
+    <link rel="modulepreload" crossorigin href="./assets/isValid-Cgon0fXK.js">
+    <link rel="modulepreload" crossorigin href="./assets/dates-66EgNvbP.js">
+    <link rel="modulepreload" crossorigin href="./assets/extends-2LbFKIQQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/emotion-is-prop-valid.esm-DiQGBfwj.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDateFormatter-CANi6nSX.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-icons.esm-C2u-_EAQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/RSPContexts-cXYB-FyL.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-DxdydCSG.js">
+    <link rel="modulepreload" crossorigin href="./assets/ellipsis-DesLDR9w.js">
+    <link rel="modulepreload" crossorigin href="./assets/external-link-CRubBjqK.js">
+    <link rel="modulepreload" crossorigin href="./assets/message-circle-D_YIPPZo.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-CExKUszm.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-CjPoUZCP.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-resizable-panels.browser.esm-CgWOEYeG.js">
+    <link rel="modulepreload" crossorigin href="./assets/JsonOutput-BtH7MWeH.js">
+    <link rel="modulepreload" crossorigin href="./assets/chart-no-axes-column-DVEV2j1H.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-function-CPbVtjKW.js">
+    <link rel="modulepreload" crossorigin href="./assets/spec-0Lz7sg6-.js">
+    <link rel="modulepreload" crossorigin href="./assets/column-preview-DLKhDynP.js">
+    <link rel="modulepreload" crossorigin href="./assets/icons-D3YFXNmD.js">
+    <link rel="modulepreload" crossorigin href="./assets/radio-group-U7lRKGle.js">
+    <link rel="modulepreload" crossorigin href="./assets/floating-outline-C0SZhwjd.js">
+    <link rel="modulepreload" crossorigin href="./assets/objectWithoutPropertiesLoose-Msf1n32r.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-DSv-aO_T.js">
+    <link rel="modulepreload" crossorigin href="./assets/readonly-python-code-DSbejFDG.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-headphone-CY5S3y3b.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-CLyu7PSP.js">
+    <link rel="modulepreload" crossorigin href="./assets/image-jhXeQEgs.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-icons-iv0e9GQO.js">
+    <link rel="modulepreload" crossorigin href="./assets/switch-bF1-CZET.js">
+    <link rel="modulepreload" crossorigin href="./assets/events-BRbNg7Li.js">
+    <link rel="modulepreload" crossorigin href="./assets/globals-BRVtF1eA.js">
+    <link rel="modulepreload" crossorigin href="./assets/share-DaxBFxkk.js">
+    <link rel="modulepreload" crossorigin href="./assets/blob-dGUJ3Bw8.js">
+    <link rel="modulepreload" crossorigin href="./assets/memoize-Tp7rARFe.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-C-qh_et5.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSet-CsW0tABf.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-C7gvYi5W.js">
+    <link rel="modulepreload" crossorigin href="./assets/label-B0dIDKzs.js">
+    <link rel="modulepreload" crossorigin href="./assets/textarea-C9UJnbJM.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-ccw-CUkO1Vlo.js">
+    <link rel="modulepreload" crossorigin href="./assets/form-BnyFeEcN.js">
+    <link rel="modulepreload" crossorigin href="./assets/renderShortcut--Jq-xdwl.js">
+    <link rel="modulepreload" crossorigin href="./assets/useBoolean-CWy308NJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeepCompareMemoize-zUHU--0D.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-xF5uWODg.js">
+    <link rel="modulepreload" crossorigin href="./assets/semaphore-FlZezxaf.js">
+    <link rel="modulepreload" crossorigin href="./assets/fileToBase64-Doh9J-g6.js">
+    <link rel="modulepreload" crossorigin href="./assets/pathUtils-ANiMIEDI.js">
+    <link rel="modulepreload" crossorigin href="./assets/prop-types-D_pYuT11.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-WvgFq7ze.js">
+    <link rel="modulepreload" crossorigin href="./assets/_hasPath-hMc_3QZy.js">
+    <link rel="modulepreload" crossorigin href="./assets/hasIn-CSsM95b1.js">
+    <link rel="modulepreload" crossorigin href="./assets/flatten-Bd5tsfm_.js">
+    <link rel="modulepreload" crossorigin href="./assets/pick-D1xb4gl6.js">
+    <link rel="modulepreload" crossorigin href="./assets/code-xml-tqeFGeKJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/house-DkdBWh44.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-DPWHdF_-.js">
+    <link rel="modulepreload" crossorigin href="./assets/triangle-alert-CV7pqa1o.js">
+    <link rel="modulepreload" crossorigin href="./assets/bundle.esm-BULc9l6b.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-pu5xzE_v.css">
+    <link rel="stylesheet" crossorigin href="./assets/markdown-renderer-DdDKmWlR.css">
+    <link rel="stylesheet" crossorigin href="./assets/JsonOutput-B7vuddcd.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-DYQYDO53.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    
+<script data-marimo="true">
+    Object.defineProperty(window, "__MARIMO_EXPORT_CONTEXT__", {
+        value: Object.freeze({
+            trusted: true,
+            notebookCode: "import marimo\n\n__generated_with = \"0.23.11\"\napp = marimo.App(width=\"medium\")\n\n\n@app.cell\ndef _():\n    import marimo as mo\n\n    return (mo,)\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    # 2\u5c64\u69cb\u9020\u306eLove\u6ce2\u5206\u6563\u66f2\u7dda\n    \"\"\")\n    return\n\n\n@app.cell\ndef _():\n    import matplotlib.pyplot as plt\n    import numpy as np\n    import scipy.optimize as so\n\n    return np, plt\n\n\n@app.function\ndef fig_default_style(ax):\n    \"\"\"\n        Matplotlib \u306e axes \u30aa\u30d6\u30b8\u30a7\u30af\u30c8 ax \u306b\u5bfe\u3057\u3066\u6a19\u6e96\u7684\u306a\u8a2d\u5b9a\u3092\u884c\u3046\n    \"\"\"\n\n    ax.tick_params(axis='both', direction='in', length=5, pad=7)\n    ax.spines['top'   ].set_visible(False)\n    ax.spines['right' ].set_visible(False)\n    ax.spines['left'  ].set_position(('outward', 10))\n    ax.spines['bottom'].set_position(('outward', 10))\n    ax.grid(linestyle = 'dashed', linewidth = 1., color = (220/255,220/255,220/255), alpha=0.8)\n    ax.set_xlabel(ax.get_xlabel(), fontsize = 'large', fontname='Helvetica Neue')\n    ax.set_ylabel(ax.get_ylabel(), fontsize = 'large', fontname='Helvetica Neue')\n    ax.set_title(ax.get_title(), fontsize = 'xx-large', fontname='Helvetica Neue')\n    for label in (ax.get_xticklabels() + ax.get_yticklabels()):\n        label.set_fontname('Helvetica Neue')\n        label.set_fontsize(10)\n\n\n@app.cell\ndef _(np):\n    ## parameters\n    fmin = 0.05 # Hz\n    fmax = 0.5  # Hz\n    Hmin = 5    # km\n    Hmax = 30   # km\n    beta2 = 3.5 # deep layer\n    vrmin = 0.2 # beta1 = vr * beta2\n    vrmax = 0.9 # \n    nfreq = 5001\n    \u03c0 = np.pi\n    return Hmax, Hmin, beta2, fmax, fmin, vrmax, vrmin, \u03c0\n\n\n@app.cell\ndef _(np, \u03c0):\n    def love_dispersion_solution_data(\u03b21, \u03b22, H, f):\n        \"\"\"\n            2\u5c64\u69cb\u9020\u306eLove\u6ce2\u306e\u5206\u6563\u66f2\u7dda\u63a8\u5b9a\u306e\u5de6\u8fba\u3068\u53f3\u8fba\u306e\u53ef\u8996\u5316\u7528\u30c7\u30fc\u30bf\u3092\u6e96\u5099\u3059\u308b\n        \"\"\"\n        # \u5bc6\u5ea6\u306f\u5909\u308f\u3089\u306a\u3044\u3068\u4eee\u5b9a\n\n        \u03c9 = 2 * \u03c0 * f\n        nx = 2000\n        xmax = \u03c9 * H * np.sqrt(1/\u03b21**2 - 1/\u03b22**2)\n        xx = np.linspace(xmax/nx, xmax, nx)\n\n        xtmp = xx / (\u03c9 * H)\n\n        # tan\u304c\u4e0d\u9023\u7d9a\u306b\u306a\u308b\u3068\u3053\u308d\u3092\u30de\u30b9\u30af\u3059\u308b\n        lhs = np.tan(xx)\n        msk = np.abs(np.cos(xx))  \u003C 0.01\n        lhs[msk] = np.nan\n\n        rhs = (\u03b22/\u03b21)**2 * np.sqrt(1/\u03b21**2 - 1/\u03b22**2 - xtmp**2) / xtmp\n\n        return xx, lhs, rhs\n\n\n    return (love_dispersion_solution_data,)\n\n\n@app.cell\ndef _(np, \u03c0):\n    def disp_lhs(c, \u03b21, \u03b22, H, f):\n\n        lhs = np.tan(2 * \u03c0 * f * H * np.sqrt(1/\u03b21**2 - 1/c**2))\n\n        return lhs\n\n    def disp_rhs(c, \u03b21, \u03b22, H, f):\n\n        rhs = (\u03b22 / \u03b21)**2 * np.sqrt(1/c**2 - 1/\u03b22**2) / np.sqrt(1/\u03b21**2 - 1/c**2)\n\n        return rhs\n\n    def disp_eq(c, \u03b21, \u03b22, H, f):\n\n        return disp_lhs(c, \u03b21, \u03b22, H, f) - disp_rhs(c, \u03b21, \u03b22, H, f)\n\n    return disp_eq, disp_lhs\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    Love\u6ce2\u5206\u6563\u65b9\u7a0b\u5f0f\u306e$x$\u8ef8\u306f\n    $$\n    x = \\omega H \\sqrt{1/\\beta_1^2 - 1/c^2}\n    $$\n    \u306a\u306e\u3067\uff0c\u305d\u306e\u6700\u5927\u5024\u306f\n    $$\n    x_{\\mathrm{max}} = \\omega H \\sqrt{1/\\beta_1^2 - 1/\\beta_2^2}\n    $$\n\n    \u89e3\u306f$\\tan(x)$\u304c\u6b63\u306b\u306a\u308b\n    - $[0, \\pi/2)$\n    - $[\\pi, 3\\pi/2)$\n    - $[2\\pi, 5\\pi/2)$\n    - $[3\\pi, 7\\pi/2)$\n\n    \u306b\u5b58\u5728\u3059\u308b\u304b\u3089\uff0c\u89e3\u306e\u500b\u6570\u306f\n    $$\n    n = \\left\\lceil \\frac{x_\\mathrm{max}}{\\pi} \\right\\rceil\n    $$\n    \u3068\u306a\u308b\uff0e\n    \u89e3\u306f\u4e0a\u8a18\u306e\u7bc4\u56f2\u3067\u63a2\u7d22\u3059\u308b\u304c\uff0c$\\tan$\u304c\u767a\u6563\u3059\u308b\u3068\u3053\u308d\u3092\u907f\u3051\u3066\uff0c$0, \\pi, 2\\pi \\dots$\u3092\u521d\u671f\u5024\u306b\u3059\u308b\u3068\u3088\u3055\u305d\u3046\uff0e\n    \u521d\u671f\u5024\u3092$c_0$\u3068\u3059\u308b\u3068\uff0c$k$\u6b21\u30e2\u30fc\u30c9\u3067\u306f\n\n    $$\n    \\omega H \\sqrt{1/\\beta_1^2 - 1/c_0^2} = k \\pi\n    $$\n    \u304b\u3089\n    $$\n    c_0 = \\left(\n        \\frac{1}{\\beta_1^2} - \\frac{k^2 \\pi^2 }{\\omega^2 H ^2}\n    \\right)^{-1/2}\n    $$\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(np, \u03c0):\n    def nmode(beta1, beta2, H, f): \n        xmax = 2 * \u03c0 * f * H * np.sqrt( 1/beta1**2 - 1/beta2**2 )\n        return int(np.ceil(xmax / \u03c0))\n\n    return (nmode,)\n\n\n@app.cell\ndef _(disp_eq, nmode, np, \u03c0):\n    def get_love_c(\u03b21, \u03b22, H, f, debug=False): \n\n        n = nmode(\u03b21, \u03b22, H, f)\n        c = np.zeros(n) * np.nan\n        for k in range(n):\n\n            cb = max((1/\u03b21**2 - ((k*\u03c0)/(2*\u03c0*f*H))**2)**(-1./2.) + 1e-7, \u03b21)\n            ce = min((1/\u03b21**2 - min( (((k+0.5)*\u03c0)/(2*\u03c0*f*H))**2, 1/\u03b21**2-1e-7))**(-1./2.) - 1e-7, \u03b22)\n            v0 = 0\n            c0p=0\n            if debug:\n                print(cb, ce)\n            for c0 in np.linspace(cb, ce, 2000):\n                v1 = disp_eq(c0, \u03b21, \u03b22, H, f)\n                if v0 * v1 \u003C 0: \n                    c[k] = (c0+c0p)/2\n                    break\n                else:\n                    v0 = v1\n                    c0p = c0\n\n            #_ = so.fsolve(disp_eq, c0, args=(\u03b21, \u03b22, H, f))\n            #c[k] = _[0]\n        return c\n\n    return (get_love_c,)\n\n\n@app.cell\ndef _(np, \u03c0):\n    def love_eigen(c, \u03b21, \u03b22, H, f, z): \n\n        \u03c9 = 2 * \u03c0 * f\n        b1c = np.sqrt(1/\u03b21**2 - 1/c**2)\n        b2c = np.sqrt(1/c**2 - 1/\u03b22**2)\n        l1 = []\n        for zz in z: \n            if zz \u003C= H:\n                l1.append(np.cos(\u03c9 * b1c * zz))\n            else: \n                l1.append(np.cos(\u03c9 * b1c * H) * np.exp(-\u03c9 * b2c * (zz-H)))\n\n        return l1\n\n    return (love_eigen,)\n\n\n@app.cell\ndef _(\n    disp_lhs,\n    fmax,\n    fmin,\n    get_love_c,\n    love_dispersion_solution_data,\n    love_eigen,\n    nmode,\n    np,\n    plt,\n    \u03c0,\n):\n    def love_plot(\u03b22, vr, H, f):    \n\n        \u03b21 = \u03b22 * vr\n\n        fig = plt.figure(figsize=(12, 8))\n        ax1 = fig.add_subplot(222)\n\n        _ = love_dispersion_solution_data(\u03b21, \u03b22, H, f)\n        c = get_love_c(\u03b21, \u03b22, H, f)\n\n        ymax = disp_lhs(c[0], \u03b21, \u03b22, H, f) * 1.2\n\n        ax1.set_xlabel(r'$\\omega H \\sqrt{1/\\beta_1^2 - 1/c^2}$')\n        ax1.plot(_[0], _[1], label='LHS', color=(250/255, 50/255, 100/255))\n        ax1.plot(_[0], _[2], label='RHS', color=(50/255, 150/255, 250/255))\n        ax1.set_ylim([0, ymax])\n        ax1.set_xlim([0, _[0][-1]])\n        ax1.legend(loc='upper right')\n\n        _xx = 2 * \u03c0 * f * H * np.sqrt(1/\u03b21**2 - 1/c**2)\n        _yy = disp_lhs(c, \u03b21, \u03b22, H, f)\n        ax1.plot(_xx, _yy, 'o', color='black')\n\n        fig_default_style(ax1)\n\n        ax2 = fig.add_subplot(221)\n\n        freq = np.linspace(fmin, fmax, 101)[::-1]\n        nmax = nmode(\u03b21, \u03b22, H, freq[0])\n        cc = np.zeros([nmax, len(freq)]) * np.nan\n        for i, ff in enumerate(freq): \n            _cc = get_love_c(\u03b21, \u03b22, H, ff)\n            for j, c_ in enumerate(_cc): \n                cc[j,i] = _cc[j]\n\n        ax2.plot([f, f], [\u03b21, \u03b22], alpha=0.4, linewidth=2.5, color='gray' )\n\n        for i, _c in enumerate(cc):\n            ax2.plot(freq, _c, color='darkorange')\n\n        ax2.set_ylim([\u03b21, \u03b22])\n        ax2.set_xlim([fmin, fmax])\n        ax2.set_xlabel('Frequency [Hz]')\n        ax2.set_ylabel('Phase speed [km/s]')\n        #ax2.legend(loc='upper left')\n        fig_default_style(ax2)\n\n        z = np.linspace(0, 60, 601)\n\n        for k in range(6):\n            try:\n                l1 = love_eigen(c[k], \u03b21, \u03b22, H, f, z)\n            except: \n                l1 = np.zeros(len(z)) * np.nan\n            axe = fig.add_subplot(2, 6, 7 + k)\n            axe.plot(l1, z, color=(0.4, 0.8, 0.4))\n            axe.set_xlim([-1.1, 1.1])\n            axe.set_ylim([0, 60])\n            axe.invert_yaxis()\n            axe.set_title(f'mode = {k}')\n            axe.spines['top'   ].set_visible(False)\n            axe.spines['right' ].set_visible(False)\n            if k == 0 :\n                axe.spines['left'  ].set_position(('outward', 10))\n                axe.set_ylabel(\"depth [km]\")\n            else:\n                axe.tick_params(axis='y', labelleft=False, left=False)\n                axe.spines['left'  ].set_visible(False)            \n            axe.spines['bottom'  ].set_position(('outward', 10))\n            axe.grid(linestyle = 'dashed', linewidth = 1., color = (220/255,220/255,220/255), alpha=0.8)\n\n        plt.subplots_adjust(wspace=0.2, hspace=0.6)\n\n        fig.tight_layout()\n\n        return fig\n\n    return (love_plot,)\n\n\n@app.cell\ndef _(Hmax, Hmin, fmax, fmin, mo, vrmax, vrmin):\n    slider_H = mo.ui.slider(start=Hmin, stop=Hmax, step=1, value = 20)\n    slider_f = mo.ui.slider(start=fmin, stop=fmax, step=0.05, value = 0.1)\n    slider_vr = mo.ui.slider(start=vrmin, stop=vrmax, step=0.1, value=0.8)\n    return slider_H, slider_f, slider_vr\n\n\n@app.cell(hide_code=True)\ndef _(beta2, mo, slider_H, slider_f, slider_vr):\n    mo.md(rf\"\"\"\n    ## \u8a08\u7b97\u30d1\u30e9\u30e1\u30bf\n\n    | \u30d1\u30e9\u30e1\u30bf\u540d | \u5024 | \u8abf\u6574 |\n    | ------- | --- | --- |\n    | \u4e0b\u5c64\u901f\u5ea6 | $\\beta_2 = {beta2}$ km/s |\uff08\u56fa\u5b9a\u5024\uff09|\n    | \u5bc6\u5ea6\u6bd4 | $\\rho_1 / \\rho_2 = 1$ | \uff08\u56fa\u5b9a\u5024\uff09|\n    | \u901f\u5ea6\u6bd4 | $\\beta_1 / \\beta_2 = {slider_vr.value}$ | {slider_vr} |\n    | \u5c64\u539a | $H = {slider_H.value}$ km | {slider_H} |\n    | \u5468\u6ce2\u6570 | $f = {slider_f.value}$ Hz | {slider_f} |\n\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(love_plot, slider_H, slider_f, slider_vr):\n    love_plot(3.5, slider_vr.value, slider_H.value, slider_f.value)\n    return\n\n\n@app.cell\ndef _():\n    return\n\n\nif __name__ == \"__main__\":\n    app.run()\n",
+        }),
+        writable: false,
+        configurable: false,
+    });
+</script>
+<marimo-code hidden="">import%20marimo%0A%0A__generated_with%20%3D%20%220.23.11%22%0Aapp%20%3D%20marimo.App(width%3D%22medium%22)%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20marimo%20as%20mo%0A%0A%20%20%20%20return%20(mo%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%202%E5%B1%A4%E6%A7%8B%E9%80%A0%E3%81%AELove%E6%B3%A2%E5%88%86%E6%95%A3%E6%9B%B2%E7%B7%9A%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20matplotlib.pyplot%20as%20plt%0A%20%20%20%20import%20numpy%20as%20np%0A%20%20%20%20import%20scipy.optimize%20as%20so%0A%0A%20%20%20%20return%20np%2C%20plt%0A%0A%0A%40app.function%0Adef%20fig_default_style(ax)%3A%0A%20%20%20%20%22%22%22%0A%20%20%20%20%20%20%20%20Matplotlib%20%E3%81%AE%20axes%20%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%20ax%20%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6%E6%A8%99%E6%BA%96%E7%9A%84%E3%81%AA%E8%A8%AD%E5%AE%9A%E3%82%92%E8%A1%8C%E3%81%86%0A%20%20%20%20%22%22%22%0A%0A%20%20%20%20ax.tick_params(axis%3D'both'%2C%20direction%3D'in'%2C%20length%3D5%2C%20pad%3D7)%0A%20%20%20%20ax.spines%5B'top'%20%20%20%5D.set_visible(False)%0A%20%20%20%20ax.spines%5B'right'%20%5D.set_visible(False)%0A%20%20%20%20ax.spines%5B'left'%20%20%5D.set_position(('outward'%2C%2010))%0A%20%20%20%20ax.spines%5B'bottom'%5D.set_position(('outward'%2C%2010))%0A%20%20%20%20ax.grid(linestyle%20%3D%20'dashed'%2C%20linewidth%20%3D%201.%2C%20color%20%3D%20(220%2F255%2C220%2F255%2C220%2F255)%2C%20alpha%3D0.8)%0A%20%20%20%20ax.set_xlabel(ax.get_xlabel()%2C%20fontsize%20%3D%20'large'%2C%20fontname%3D'Helvetica%20Neue')%0A%20%20%20%20ax.set_ylabel(ax.get_ylabel()%2C%20fontsize%20%3D%20'large'%2C%20fontname%3D'Helvetica%20Neue')%0A%20%20%20%20ax.set_title(ax.get_title()%2C%20fontsize%20%3D%20'xx-large'%2C%20fontname%3D'Helvetica%20Neue')%0A%20%20%20%20for%20label%20in%20(ax.get_xticklabels()%20%2B%20ax.get_yticklabels())%3A%0A%20%20%20%20%20%20%20%20label.set_fontname('Helvetica%20Neue')%0A%20%20%20%20%20%20%20%20label.set_fontsize(10)%0A%0A%0A%40app.cell%0Adef%20_(np)%3A%0A%20%20%20%20%23%23%20parameters%0A%20%20%20%20fmin%20%3D%200.05%20%23%20Hz%0A%20%20%20%20fmax%20%3D%200.5%20%20%23%20Hz%0A%20%20%20%20Hmin%20%3D%205%20%20%20%20%23%20km%0A%20%20%20%20Hmax%20%3D%2030%20%20%20%23%20km%0A%20%20%20%20beta2%20%3D%203.5%20%23%20deep%20layer%0A%20%20%20%20vrmin%20%3D%200.2%20%23%20beta1%20%3D%20vr%20*%20beta2%0A%20%20%20%20vrmax%20%3D%200.9%20%23%20%0A%20%20%20%20nfreq%20%3D%205001%0A%20%20%20%20%CF%80%20%3D%20np.pi%0A%20%20%20%20return%20Hmax%2C%20Hmin%2C%20beta2%2C%20fmax%2C%20fmin%2C%20vrmax%2C%20vrmin%2C%20%CF%80%0A%0A%0A%40app.cell%0Adef%20_(np%2C%20%CF%80)%3A%0A%20%20%20%20def%20love_dispersion_solution_data(%CE%B21%2C%20%CE%B22%2C%20H%2C%20f)%3A%0A%20%20%20%20%20%20%20%20%22%22%22%0A%20%20%20%20%20%20%20%20%20%20%20%202%E5%B1%A4%E6%A7%8B%E9%80%A0%E3%81%AELove%E6%B3%A2%E3%81%AE%E5%88%86%E6%95%A3%E6%9B%B2%E7%B7%9A%E6%8E%A8%E5%AE%9A%E3%81%AE%E5%B7%A6%E8%BE%BA%E3%81%A8%E5%8F%B3%E8%BE%BA%E3%81%AE%E5%8F%AF%E8%A6%96%E5%8C%96%E7%94%A8%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%BA%96%E5%82%99%E3%81%99%E3%82%8B%0A%20%20%20%20%20%20%20%20%22%22%22%0A%20%20%20%20%20%20%20%20%23%20%E5%AF%86%E5%BA%A6%E3%81%AF%E5%A4%89%E3%82%8F%E3%82%89%E3%81%AA%E3%81%84%E3%81%A8%E4%BB%AE%E5%AE%9A%0A%0A%20%20%20%20%20%20%20%20%CF%89%20%3D%202%20*%20%CF%80%20*%20f%0A%20%20%20%20%20%20%20%20nx%20%3D%202000%0A%20%20%20%20%20%20%20%20xmax%20%3D%20%CF%89%20*%20H%20*%20np.sqrt(1%2F%CE%B21**2%20-%201%2F%CE%B22**2)%0A%20%20%20%20%20%20%20%20xx%20%3D%20np.linspace(xmax%2Fnx%2C%20xmax%2C%20nx)%0A%0A%20%20%20%20%20%20%20%20xtmp%20%3D%20xx%20%2F%20(%CF%89%20*%20H)%0A%0A%20%20%20%20%20%20%20%20%23%20tan%E3%81%8C%E4%B8%8D%E9%80%A3%E7%B6%9A%E3%81%AB%E3%81%AA%E3%82%8B%E3%81%A8%E3%81%93%E3%82%8D%E3%82%92%E3%83%9E%E3%82%B9%E3%82%AF%E3%81%99%E3%82%8B%0A%20%20%20%20%20%20%20%20lhs%20%3D%20np.tan(xx)%0A%20%20%20%20%20%20%20%20msk%20%3D%20np.abs(np.cos(xx))%20%20%3C%200.01%0A%20%20%20%20%20%20%20%20lhs%5Bmsk%5D%20%3D%20np.nan%0A%0A%20%20%20%20%20%20%20%20rhs%20%3D%20(%CE%B22%2F%CE%B21)**2%20*%20np.sqrt(1%2F%CE%B21**2%20-%201%2F%CE%B22**2%20-%20xtmp**2)%20%2F%20xtmp%0A%0A%20%20%20%20%20%20%20%20return%20xx%2C%20lhs%2C%20rhs%0A%0A%0A%20%20%20%20return%20(love_dispersion_solution_data%2C)%0A%0A%0A%40app.cell%0Adef%20_(np%2C%20%CF%80)%3A%0A%20%20%20%20def%20disp_lhs(c%2C%20%CE%B21%2C%20%CE%B22%2C%20H%2C%20f)%3A%0A%0A%20%20%20%20%20%20%20%20lhs%20%3D%20np.tan(2%20*%20%CF%80%20*%20f%20*%20H%20*%20np.sqrt(1%2F%CE%B21**2%20-%201%2Fc**2))%0A%0A%20%20%20%20%20%20%20%20return%20lhs%0A%0A%20%20%20%20def%20disp_rhs(c%2C%20%CE%B21%2C%20%CE%B22%2C%20H%2C%20f)%3A%0A%0A%20%20%20%20%20%20%20%20rhs%20%3D%20(%CE%B22%20%2F%20%CE%B21)**2%20*%20np.sqrt(1%2Fc**2%20-%201%2F%CE%B22**2)%20%2F%20np.sqrt(1%2F%CE%B21**2%20-%201%2Fc**2)%0A%0A%20%20%20%20%20%20%20%20return%20rhs%0A%0A%20%20%20%20def%20disp_eq(c%2C%20%CE%B21%2C%20%CE%B22%2C%20H%2C%20f)%3A%0A%0A%20%20%20%20%20%20%20%20return%20disp_lhs(c%2C%20%CE%B21%2C%20%CE%B22%2C%20H%2C%20f)%20-%20disp_rhs(c%2C%20%CE%B21%2C%20%CE%B22%2C%20H%2C%20f)%0A%0A%20%20%20%20return%20disp_eq%2C%20disp_lhs%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20Love%E6%B3%A2%E5%88%86%E6%95%A3%E6%96%B9%E7%A8%8B%E5%BC%8F%E3%81%AE%24x%24%E8%BB%B8%E3%81%AF%0A%20%20%20%20%24%24%0A%20%20%20%20x%20%3D%20%5Comega%20H%20%5Csqrt%7B1%2F%5Cbeta_1%5E2%20-%201%2Fc%5E2%7D%0A%20%20%20%20%24%24%0A%20%20%20%20%E3%81%AA%E3%81%AE%E3%81%A7%EF%BC%8C%E3%81%9D%E3%81%AE%E6%9C%80%E5%A4%A7%E5%80%A4%E3%81%AF%0A%20%20%20%20%24%24%0A%20%20%20%20x_%7B%5Cmathrm%7Bmax%7D%7D%20%3D%20%5Comega%20H%20%5Csqrt%7B1%2F%5Cbeta_1%5E2%20-%201%2F%5Cbeta_2%5E2%7D%0A%20%20%20%20%24%24%0A%0A%20%20%20%20%E8%A7%A3%E3%81%AF%24%5Ctan(x)%24%E3%81%8C%E6%AD%A3%E3%81%AB%E3%81%AA%E3%82%8B%0A%20%20%20%20-%20%24%5B0%2C%20%5Cpi%2F2)%24%0A%20%20%20%20-%20%24%5B%5Cpi%2C%203%5Cpi%2F2)%24%0A%20%20%20%20-%20%24%5B2%5Cpi%2C%205%5Cpi%2F2)%24%0A%20%20%20%20-%20%24%5B3%5Cpi%2C%207%5Cpi%2F2)%24%0A%0A%20%20%20%20%E3%81%AB%E5%AD%98%E5%9C%A8%E3%81%99%E3%82%8B%E3%81%8B%E3%82%89%EF%BC%8C%E8%A7%A3%E3%81%AE%E5%80%8B%E6%95%B0%E3%81%AF%0A%20%20%20%20%24%24%0A%20%20%20%20n%20%3D%20%5Cleft%5Clceil%20%5Cfrac%7Bx_%5Cmathrm%7Bmax%7D%7D%7B%5Cpi%7D%20%5Cright%5Crceil%0A%20%20%20%20%24%24%0A%20%20%20%20%E3%81%A8%E3%81%AA%E3%82%8B%EF%BC%8E%0A%20%20%20%20%E8%A7%A3%E3%81%AF%E4%B8%8A%E8%A8%98%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%A7%E6%8E%A2%E7%B4%A2%E3%81%99%E3%82%8B%E3%81%8C%EF%BC%8C%24%5Ctan%24%E3%81%8C%E7%99%BA%E6%95%A3%E3%81%99%E3%82%8B%E3%81%A8%E3%81%93%E3%82%8D%E3%82%92%E9%81%BF%E3%81%91%E3%81%A6%EF%BC%8C%240%2C%20%5Cpi%2C%202%5Cpi%20%5Cdots%24%E3%82%92%E5%88%9D%E6%9C%9F%E5%80%A4%E3%81%AB%E3%81%99%E3%82%8B%E3%81%A8%E3%82%88%E3%81%95%E3%81%9D%E3%81%86%EF%BC%8E%0A%20%20%20%20%E5%88%9D%E6%9C%9F%E5%80%A4%E3%82%92%24c_0%24%E3%81%A8%E3%81%99%E3%82%8B%E3%81%A8%EF%BC%8C%24k%24%E6%AC%A1%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7%E3%81%AF%0A%0A%20%20%20%20%24%24%0A%20%20%20%20%5Comega%20H%20%5Csqrt%7B1%2F%5Cbeta_1%5E2%20-%201%2Fc_0%5E2%7D%20%3D%20k%20%5Cpi%0A%20%20%20%20%24%24%0A%20%20%20%20%E3%81%8B%E3%82%89%0A%20%20%20%20%24%24%0A%20%20%20%20c_0%20%3D%20%5Cleft(%0A%20%20%20%20%20%20%20%20%5Cfrac%7B1%7D%7B%5Cbeta_1%5E2%7D%20-%20%5Cfrac%7Bk%5E2%20%5Cpi%5E2%20%7D%7B%5Comega%5E2%20H%20%5E2%7D%0A%20%20%20%20%5Cright)%5E%7B-1%2F2%7D%0A%20%20%20%20%24%24%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(np%2C%20%CF%80)%3A%0A%20%20%20%20def%20nmode(beta1%2C%20beta2%2C%20H%2C%20f)%3A%20%0A%20%20%20%20%20%20%20%20xmax%20%3D%202%20*%20%CF%80%20*%20f%20*%20H%20*%20np.sqrt(%201%2Fbeta1**2%20-%201%2Fbeta2**2%20)%0A%20%20%20%20%20%20%20%20return%20int(np.ceil(xmax%20%2F%20%CF%80))%0A%0A%20%20%20%20return%20(nmode%2C)%0A%0A%0A%40app.cell%0Adef%20_(disp_eq%2C%20nmode%2C%20np%2C%20%CF%80)%3A%0A%20%20%20%20def%20get_love_c(%CE%B21%2C%20%CE%B22%2C%20H%2C%20f%2C%20debug%3DFalse)%3A%20%0A%0A%20%20%20%20%20%20%20%20n%20%3D%20nmode(%CE%B21%2C%20%CE%B22%2C%20H%2C%20f)%0A%20%20%20%20%20%20%20%20c%20%3D%20np.zeros(n)%20*%20np.nan%0A%20%20%20%20%20%20%20%20for%20k%20in%20range(n)%3A%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20cb%20%3D%20max((1%2F%CE%B21**2%20-%20((k*%CF%80)%2F(2*%CF%80*f*H))**2)**(-1.%2F2.)%20%2B%201e-7%2C%20%CE%B21)%0A%20%20%20%20%20%20%20%20%20%20%20%20ce%20%3D%20min((1%2F%CE%B21**2%20-%20min(%20(((k%2B0.5)*%CF%80)%2F(2*%CF%80*f*H))**2%2C%201%2F%CE%B21**2-1e-7))**(-1.%2F2.)%20-%201e-7%2C%20%CE%B22)%0A%20%20%20%20%20%20%20%20%20%20%20%20v0%20%3D%200%0A%20%20%20%20%20%20%20%20%20%20%20%20c0p%3D0%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20debug%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20print(cb%2C%20ce)%0A%20%20%20%20%20%20%20%20%20%20%20%20for%20c0%20in%20np.linspace(cb%2C%20ce%2C%202000)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20v1%20%3D%20disp_eq(c0%2C%20%CE%B21%2C%20%CE%B22%2C%20H%2C%20f)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20v0%20*%20v1%20%3C%200%3A%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20c%5Bk%5D%20%3D%20(c0%2Bc0p)%2F2%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20break%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20v0%20%3D%20v1%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20c0p%20%3D%20c0%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%23_%20%3D%20so.fsolve(disp_eq%2C%20c0%2C%20args%3D(%CE%B21%2C%20%CE%B22%2C%20H%2C%20f))%0A%20%20%20%20%20%20%20%20%20%20%20%20%23c%5Bk%5D%20%3D%20_%5B0%5D%0A%20%20%20%20%20%20%20%20return%20c%0A%0A%20%20%20%20return%20(get_love_c%2C)%0A%0A%0A%40app.cell%0Adef%20_(np%2C%20%CF%80)%3A%0A%20%20%20%20def%20love_eigen(c%2C%20%CE%B21%2C%20%CE%B22%2C%20H%2C%20f%2C%20z)%3A%20%0A%0A%20%20%20%20%20%20%20%20%CF%89%20%3D%202%20*%20%CF%80%20*%20f%0A%20%20%20%20%20%20%20%20b1c%20%3D%20np.sqrt(1%2F%CE%B21**2%20-%201%2Fc**2)%0A%20%20%20%20%20%20%20%20b2c%20%3D%20np.sqrt(1%2Fc**2%20-%201%2F%CE%B22**2)%0A%20%20%20%20%20%20%20%20l1%20%3D%20%5B%5D%0A%20%20%20%20%20%20%20%20for%20zz%20in%20z%3A%20%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20zz%20%3C%3D%20H%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20l1.append(np.cos(%CF%89%20*%20b1c%20*%20zz))%0A%20%20%20%20%20%20%20%20%20%20%20%20else%3A%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20l1.append(np.cos(%CF%89%20*%20b1c%20*%20H)%20*%20np.exp(-%CF%89%20*%20b2c%20*%20(zz-H)))%0A%0A%20%20%20%20%20%20%20%20return%20l1%0A%0A%20%20%20%20return%20(love_eigen%2C)%0A%0A%0A%40app.cell%0Adef%20_(%0A%20%20%20%20disp_lhs%2C%0A%20%20%20%20fmax%2C%0A%20%20%20%20fmin%2C%0A%20%20%20%20get_love_c%2C%0A%20%20%20%20love_dispersion_solution_data%2C%0A%20%20%20%20love_eigen%2C%0A%20%20%20%20nmode%2C%0A%20%20%20%20np%2C%0A%20%20%20%20plt%2C%0A%20%20%20%20%CF%80%2C%0A)%3A%0A%20%20%20%20def%20love_plot(%CE%B22%2C%20vr%2C%20H%2C%20f)%3A%20%20%20%20%0A%0A%20%20%20%20%20%20%20%20%CE%B21%20%3D%20%CE%B22%20*%20vr%0A%0A%20%20%20%20%20%20%20%20fig%20%3D%20plt.figure(figsize%3D(12%2C%208))%0A%20%20%20%20%20%20%20%20ax1%20%3D%20fig.add_subplot(222)%0A%0A%20%20%20%20%20%20%20%20_%20%3D%20love_dispersion_solution_data(%CE%B21%2C%20%CE%B22%2C%20H%2C%20f)%0A%20%20%20%20%20%20%20%20c%20%3D%20get_love_c(%CE%B21%2C%20%CE%B22%2C%20H%2C%20f)%0A%0A%20%20%20%20%20%20%20%20ymax%20%3D%20disp_lhs(c%5B0%5D%2C%20%CE%B21%2C%20%CE%B22%2C%20H%2C%20f)%20*%201.2%0A%0A%20%20%20%20%20%20%20%20ax1.set_xlabel(r'%24%5Comega%20H%20%5Csqrt%7B1%2F%5Cbeta_1%5E2%20-%201%2Fc%5E2%7D%24')%0A%20%20%20%20%20%20%20%20ax1.plot(_%5B0%5D%2C%20_%5B1%5D%2C%20label%3D'LHS'%2C%20color%3D(250%2F255%2C%2050%2F255%2C%20100%2F255))%0A%20%20%20%20%20%20%20%20ax1.plot(_%5B0%5D%2C%20_%5B2%5D%2C%20label%3D'RHS'%2C%20color%3D(50%2F255%2C%20150%2F255%2C%20250%2F255))%0A%20%20%20%20%20%20%20%20ax1.set_ylim(%5B0%2C%20ymax%5D)%0A%20%20%20%20%20%20%20%20ax1.set_xlim(%5B0%2C%20_%5B0%5D%5B-1%5D%5D)%0A%20%20%20%20%20%20%20%20ax1.legend(loc%3D'upper%20right')%0A%0A%20%20%20%20%20%20%20%20_xx%20%3D%202%20*%20%CF%80%20*%20f%20*%20H%20*%20np.sqrt(1%2F%CE%B21**2%20-%201%2Fc**2)%0A%20%20%20%20%20%20%20%20_yy%20%3D%20disp_lhs(c%2C%20%CE%B21%2C%20%CE%B22%2C%20H%2C%20f)%0A%20%20%20%20%20%20%20%20ax1.plot(_xx%2C%20_yy%2C%20'o'%2C%20color%3D'black')%0A%0A%20%20%20%20%20%20%20%20fig_default_style(ax1)%0A%0A%20%20%20%20%20%20%20%20ax2%20%3D%20fig.add_subplot(221)%0A%0A%20%20%20%20%20%20%20%20freq%20%3D%20np.linspace(fmin%2C%20fmax%2C%20101)%5B%3A%3A-1%5D%0A%20%20%20%20%20%20%20%20nmax%20%3D%20nmode(%CE%B21%2C%20%CE%B22%2C%20H%2C%20freq%5B0%5D)%0A%20%20%20%20%20%20%20%20cc%20%3D%20np.zeros(%5Bnmax%2C%20len(freq)%5D)%20*%20np.nan%0A%20%20%20%20%20%20%20%20for%20i%2C%20ff%20in%20enumerate(freq)%3A%20%0A%20%20%20%20%20%20%20%20%20%20%20%20_cc%20%3D%20get_love_c(%CE%B21%2C%20%CE%B22%2C%20H%2C%20ff)%0A%20%20%20%20%20%20%20%20%20%20%20%20for%20j%2C%20c_%20in%20enumerate(_cc)%3A%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20cc%5Bj%2Ci%5D%20%3D%20_cc%5Bj%5D%0A%0A%20%20%20%20%20%20%20%20ax2.plot(%5Bf%2C%20f%5D%2C%20%5B%CE%B21%2C%20%CE%B22%5D%2C%20alpha%3D0.4%2C%20linewidth%3D2.5%2C%20color%3D'gray'%20)%0A%0A%20%20%20%20%20%20%20%20for%20i%2C%20_c%20in%20enumerate(cc)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20ax2.plot(freq%2C%20_c%2C%20color%3D'darkorange')%0A%0A%20%20%20%20%20%20%20%20ax2.set_ylim(%5B%CE%B21%2C%20%CE%B22%5D)%0A%20%20%20%20%20%20%20%20ax2.set_xlim(%5Bfmin%2C%20fmax%5D)%0A%20%20%20%20%20%20%20%20ax2.set_xlabel('Frequency%20%5BHz%5D')%0A%20%20%20%20%20%20%20%20ax2.set_ylabel('Phase%20speed%20%5Bkm%2Fs%5D')%0A%20%20%20%20%20%20%20%20%23ax2.legend(loc%3D'upper%20left')%0A%20%20%20%20%20%20%20%20fig_default_style(ax2)%0A%0A%20%20%20%20%20%20%20%20z%20%3D%20np.linspace(0%2C%2060%2C%20601)%0A%0A%20%20%20%20%20%20%20%20for%20k%20in%20range(6)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20try%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20l1%20%3D%20love_eigen(c%5Bk%5D%2C%20%CE%B21%2C%20%CE%B22%2C%20H%2C%20f%2C%20z)%0A%20%20%20%20%20%20%20%20%20%20%20%20except%3A%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20l1%20%3D%20np.zeros(len(z))%20*%20np.nan%0A%20%20%20%20%20%20%20%20%20%20%20%20axe%20%3D%20fig.add_subplot(2%2C%206%2C%207%20%2B%20k)%0A%20%20%20%20%20%20%20%20%20%20%20%20axe.plot(l1%2C%20z%2C%20color%3D(0.4%2C%200.8%2C%200.4))%0A%20%20%20%20%20%20%20%20%20%20%20%20axe.set_xlim(%5B-1.1%2C%201.1%5D)%0A%20%20%20%20%20%20%20%20%20%20%20%20axe.set_ylim(%5B0%2C%2060%5D)%0A%20%20%20%20%20%20%20%20%20%20%20%20axe.invert_yaxis()%0A%20%20%20%20%20%20%20%20%20%20%20%20axe.set_title(f'mode%20%3D%20%7Bk%7D')%0A%20%20%20%20%20%20%20%20%20%20%20%20axe.spines%5B'top'%20%20%20%5D.set_visible(False)%0A%20%20%20%20%20%20%20%20%20%20%20%20axe.spines%5B'right'%20%5D.set_visible(False)%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20k%20%3D%3D%200%20%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20axe.spines%5B'left'%20%20%5D.set_position(('outward'%2C%2010))%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20axe.set_ylabel(%22depth%20%5Bkm%5D%22)%0A%20%20%20%20%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20axe.tick_params(axis%3D'y'%2C%20labelleft%3DFalse%2C%20left%3DFalse)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20axe.spines%5B'left'%20%20%5D.set_visible(False)%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20axe.spines%5B'bottom'%20%20%5D.set_position(('outward'%2C%2010))%0A%20%20%20%20%20%20%20%20%20%20%20%20axe.grid(linestyle%20%3D%20'dashed'%2C%20linewidth%20%3D%201.%2C%20color%20%3D%20(220%2F255%2C220%2F255%2C220%2F255)%2C%20alpha%3D0.8)%0A%0A%20%20%20%20%20%20%20%20plt.subplots_adjust(wspace%3D0.2%2C%20hspace%3D0.6)%0A%0A%20%20%20%20%20%20%20%20fig.tight_layout()%0A%0A%20%20%20%20%20%20%20%20return%20fig%0A%0A%20%20%20%20return%20(love_plot%2C)%0A%0A%0A%40app.cell%0Adef%20_(Hmax%2C%20Hmin%2C%20fmax%2C%20fmin%2C%20mo%2C%20vrmax%2C%20vrmin)%3A%0A%20%20%20%20slider_H%20%3D%20mo.ui.slider(start%3DHmin%2C%20stop%3DHmax%2C%20step%3D1%2C%20value%20%3D%2020)%0A%20%20%20%20slider_f%20%3D%20mo.ui.slider(start%3Dfmin%2C%20stop%3Dfmax%2C%20step%3D0.05%2C%20value%20%3D%200.1)%0A%20%20%20%20slider_vr%20%3D%20mo.ui.slider(start%3Dvrmin%2C%20stop%3Dvrmax%2C%20step%3D0.1%2C%20value%3D0.8)%0A%20%20%20%20return%20slider_H%2C%20slider_f%2C%20slider_vr%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(beta2%2C%20mo%2C%20slider_H%2C%20slider_f%2C%20slider_vr)%3A%0A%20%20%20%20mo.md(rf%22%22%22%0A%20%20%20%20%23%23%20%E8%A8%88%E7%AE%97%E3%83%91%E3%83%A9%E3%83%A1%E3%82%BF%0A%0A%20%20%20%20%7C%20%E3%83%91%E3%83%A9%E3%83%A1%E3%82%BF%E5%90%8D%20%7C%20%E5%80%A4%20%7C%20%E8%AA%BF%E6%95%B4%20%7C%0A%20%20%20%20%7C%20-------%20%7C%20---%20%7C%20---%20%7C%0A%20%20%20%20%7C%20%E4%B8%8B%E5%B1%A4%E9%80%9F%E5%BA%A6%20%7C%20%24%5Cbeta_2%20%3D%20%7Bbeta2%7D%24%20km%2Fs%20%7C%EF%BC%88%E5%9B%BA%E5%AE%9A%E5%80%A4%EF%BC%89%7C%0A%20%20%20%20%7C%20%E5%AF%86%E5%BA%A6%E6%AF%94%20%7C%20%24%5Crho_1%20%2F%20%5Crho_2%20%3D%201%24%20%7C%20%EF%BC%88%E5%9B%BA%E5%AE%9A%E5%80%A4%EF%BC%89%7C%0A%20%20%20%20%7C%20%E9%80%9F%E5%BA%A6%E6%AF%94%20%7C%20%24%5Cbeta_1%20%2F%20%5Cbeta_2%20%3D%20%7Bslider_vr.value%7D%24%20%7C%20%7Bslider_vr%7D%20%7C%0A%20%20%20%20%7C%20%E5%B1%A4%E5%8E%9A%20%7C%20%24H%20%3D%20%7Bslider_H.value%7D%24%20km%20%7C%20%7Bslider_H%7D%20%7C%0A%20%20%20%20%7C%20%E5%91%A8%E6%B3%A2%E6%95%B0%20%7C%20%24f%20%3D%20%7Bslider_f.value%7D%24%20Hz%20%7C%20%7Bslider_f%7D%20%7C%0A%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(love_plot%2C%20slider_H%2C%20slider_f%2C%20slider_vr)%3A%0A%20%20%20%20love_plot(3.5%2C%20slider_vr.value%2C%20slider_H.value%2C%20slider_f.value)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <!-- This is a portal for the data editor to render in -->
+    <div id="portal" data-testid="glide-portal" style="position: fixed; left: 0; top: 0; z-index: 9999"></div>
+    <script data-marimo="true">
+      Object.defineProperty(window, "__MARIMO_MOUNT_CONFIG__", {
+        value: Object.freeze({
+            "filename": "notebook.py",
+            "cwd": "",
+            "lspWorkspace": null,
+            "mode": "read",
+            "version": "0.23.11",
+            "serverToken": "unused",
+            "config": {"ai": {"custom_providers": {}, "enabled": true, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "auto_close_pairs": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": true, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "pip"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "show_tracebacks": false, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "medium"},
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null,
+        }),
+        writable: false,
+        configurable: false,
+      });
+    </script>
+  </body>
+</html>
