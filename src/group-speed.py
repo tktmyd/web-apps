@@ -4,6 +4,14 @@ __generated_with = "0.23.11"
 app = marimo.App(width="medium")
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    # 群速度と位相速度
+    """)
+    return
+
+
 @app.cell
 def _():
     import marimo as mo
@@ -111,6 +119,14 @@ def _(plt, t, x, z):
         return fig
 
     return (plot3d,)
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    時空間プロット
+    """)
+    return
 
 
 @app.cell
