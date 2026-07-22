@@ -13,6 +13,15 @@ def _():
     return mo, np, plt
 
 
+@app.cell
+def _(plt):
+    plt.rcParams['text.usetex'] = True
+    plt.rcParams['text.latex.preamble'] = r'\usepackage{newpxmath, newpxtext} \usepackage{bm}'
+    #plt.rcParams['text.latex.preamble'] = r'\usepackage{sfmath} \usepackage{bm}'
+    plt.rcParams['font.family'] = 'Palatino'
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -82,9 +91,9 @@ def _(np, plt):
                             shrinkA=0,
                             shrinkB=0,),)
 
-        ax2.text(-1.05, -0.075, rf'$\lambda \, /  \, h={1/L:.1f}$', va = 'top', ha='left', 
+        ax2.text(-1.05, -0.05, rf'$\lambda \, /  \, h={1/L:.1f}$', va = 'top', ha='left', 
                bbox={'facecolor': 'white', 'alpha': 0.8, 'linewidth': 0})
-        ax2.text(1.0, 1.01, rf'$c = {cr:.2f} \sqrt{{g_0 h}}$', va='top', ha='right')
+        ax2.text(1.0, 1.05, rf'$c = {cr:.2f} \sqrt{{g_0 h}}$', va='center', ha='right')
 
         ax2.set_xlim(-1.1, 1.1)
         ax2.set_ylim(-0.1, 1.1)
@@ -97,7 +106,7 @@ def _(np, plt):
         ax2.axis('off')
         plt.subplots_adjust(top=0.8, bottom=0.2)
 
-        fig.tight_layout()
+    #    fig.tight_layout()
 
         return fig
 
