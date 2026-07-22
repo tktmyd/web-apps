@@ -34,32 +34,32 @@ def _(np, plt):
         ## 分散曲線
         LL = np.logspace(-3, 1, 501)
         cn = np.tanh(2 * np.pi * LL) / (2 * np.pi * LL)    
-    
-        fig, axes = plt.subplots(1, 2, width_ratios=[1, 0.52])
-        ax1 = axes[0]
-        ax2 = axes[1]
-        ax1.plot(LL, cn, lw=2, color='darkblue')
+
+        fig = plt.figure(figsize=[8, 6])
+        ax1 = fig.add_axes([0.1, 0.1, 0.5, 0.8])
+        ax2 = fig.add_axes([0.6, 0.15, 0.3, 0.78])
+        ax1.plot(1/LL, cn, lw=2, color='darkblue')
         ax1.set_xscale('log')
-        ax1.set_xlabel(r'$h\,/\,\lambda$')
+        ax1.set_xlabel(r'$\lambda\,/\,h$')
         ax1.set_ylabel(r'$c(\lambda)\,/\,\sqrt{g_0 h}$')
-        ax1.set_xticks([0.001, 0.01, 0.1, 1, 10])
+        ax1.set_xticks([0.1, 1, 10, 100, 1000])
         ax1.set_yticks([0, 0.5, 1])
         ax1.set_aspect(4)
         ax1.grid(alpha=0.5)
-        ax1.plot([L, L], [-0.1, 1.1], color='lightblue', alpha=0.5, lw=4)
+        ax1.plot([1/L, 1/L], [-0.1, 1.1], color='lightblue', alpha=0.5, lw=4)
         ax1.set_ylim(0., 1.05)
-        ax1.set_xlim(0.001, 10)
-    
+        ax1.set_xlim(0.1, 1000)
+
         ## Partile motion
         kh = 2 * np.pi * L
         # scale length defined by sqrt of area of particle motion
         A0 = max(np.sqrt(np.pi * np.cosh(kh) * np.sinh(kh)) * 2, np.cosh(kh))
 
         cr = np.sqrt(np.tanh(kh) / kh) 
-    
+
         for zc in np.arange(0.95, 0.04, -0.15):
             kz = zc * kh
-            
+
             Ax = np.cosh(kh-kz) / A0
             Az = np.sinh(kh-kz) / A0
 
@@ -82,10 +82,10 @@ def _(np, plt):
                             shrinkA=0,
                             shrinkB=0,),)
 
-        ax2.text(-1.05, -0.075, rf'$h \, /  \, \lambda={L:.3f}$', va = 'top', ha='left', 
+        ax2.text(-1.05, -0.075, rf'$\lambda \, /  \, h={1/L:.1f}$', va = 'top', ha='left', 
                bbox={'facecolor': 'white', 'alpha': 0.8, 'linewidth': 0})
         ax2.text(1.0, 1.01, rf'$c = {cr:.2f} \sqrt{{g_0 h}}$', va='top', ha='right')
-    
+
         ax2.set_xlim(-1.1, 1.1)
         ax2.set_ylim(-0.1, 1.1)
         ax2.set_aspect(4)
@@ -95,9 +95,10 @@ def _(np, plt):
         ax2.set_ylim(-0.2, 1.1)
         ax2.invert_yaxis()
         ax2.axis('off')
+        plt.subplots_adjust(top=0.8, bottom=0.2)
 
         fig.tight_layout()
-    
+
         return fig
 
     return (tsunami_dispersion_motion,)
@@ -105,21 +106,21 @@ def _(np, plt):
 
 @app.cell
 def _(mo, np):
-    slider_L = mo.ui.slider(steps=np.logspace(-3, 1, 25), value=0.1)
-    return (slider_L,)
+    slider_Linv = mo.ui.slider(steps=np.logspace(-1, 3, 25), value=10)
+    return (slider_Linv,)
 
 
 @app.cell
-def _(mo, slider_L):
+def _(mo, slider_Linv):
     mo.md(fr"""
-    $h/\lambda$ : {slider_L} {slider_L.value:.2f}
+    $\lambda\,/\,h$ : {slider_Linv} {slider_Linv.value:.1f}
     """)
     return
 
 
 @app.cell
-def _(slider_L, tsunami_dispersion_motion):
-    tsunami_dispersion_motion(slider_L.value)
+def _(slider_Linv, tsunami_dispersion_motion):
+    tsunami_dispersion_motion(1/slider_Linv.value)
     return
 
 
