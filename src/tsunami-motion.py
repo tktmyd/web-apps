@@ -13,15 +13,6 @@ def _():
     return mo, np, plt
 
 
-@app.cell
-def _(plt):
-    plt.rcParams['text.usetex'] = True
-    plt.rcParams['text.latex.preamble'] = r'\usepackage{newpxmath, newpxtext} \usepackage{bm}'
-    #plt.rcParams['text.latex.preamble'] = r'\usepackage{sfmath} \usepackage{bm}'
-    plt.rcParams['font.family'] = 'Palatino'
-    return
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
